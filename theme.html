@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{Title}</title>
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+    {block:Description}
+      <meta name="description" content="{MetaDescription}" />
+    {/block:Description}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://static.tumblr.com/fpifyru/VCxlv9xwi/writecapture.js"></script>
+    <script src="http://static.tumblr.com/fpifyru/AKFlv9zdu/embedgist.js"></script>
+    <style>
+body {
+  margin: 0 auto;
+  padding: 1em;
+  max-width: 960px;
+  color: #252525;
+  font-family: serif;
+  background: #fafafa;
+}
+#title {
+  margin: 0.5em 0 0 0;
+  font-size: 128px;
+  font-family: serif;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50%;
+  letter-spacing: -0.05em;
+}
+#title a {
+  display: block;
+  color: #4a4a4a;
+  text-decoration: none;
+}
+
+#description {
+  text-align: right;
+  padding-right: 5px;
+}
+.post {
+  margin-top: 4em;
+}
+.title {
+  margin: 0;
+  border-bottom: 1px dashed #898989;
+}
+.title a {
+  display: block;
+  padding: 0 5px;
+  color: #252525;
+  text-decoration: none;
+}
+.title a:hover {
+  background-color: rgba(242, 215, 215, 0.44);
+}
+.body {
+  padding: 0 5px;
+  line-height: 140%;
+}
+pre {
+  padding: 0.5em;
+  background-color: #eee;
+}
+code {
+  padding: 3px;
+  background-color: #eee;
+}
+    </style>
+  </head>
+  <body>
+    <h1 id="title"><a href="/">{Title}</a></h1>
+    {block:Description}
+      <p id="description">{Description}</p>
+    {/block:Description}
+    <div class="posts">
+      {block:Posts}
+        {block:Text}
+          <div class="post text">
+            {block:Title}
+              <h2 class="title"><a href="{Permalink}">{Title}</a></h2>
+            {/block:Title}
+            <div class="body">{Body}</div>
+          </div>
+        {/block:Text}
+        {block:Photo}
+          <div class="post photo">
+            <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+            {block:Caption}
+              <div class="caption">{Caption}</div>
+            {/block:Caption}
+          </div>
+        {/block:Photo}
+        {block:Photoset}
+          <div class="post photoset">
+            {Photoset-500}
+            {block:Caption}
+              <div class="caption">{Caption}</div>
+            {/block:Caption}
+          </div>
+        {/block:Photoset}
+        {block:Quote}
+          <div class="post quote">
+            "{Quote}"
+            {block:Source}
+              <div class="source">{Source}</div>
+            {/block:Source}
+          </div>
+        {/block:Quote}
+        {block:Link}
+          <div class="post link">
+            <a href="{URL}" class="link" {Target}>{Name}</a>
+            {block:Description}
+              <div class="description">{Description}</div>
+            {/block:Description}
+          </div>
+        {/block:Link}
+        {block:Chat}
+          <div class="post chat">
+            {block:Title}
+              <h2 clss="title"><a href="{Permalink}">{Title}</a></h2>
+            {/block:Title}
+            <ul class="chat">
+              {block:Lines}
+                <li class="{Alt} user_{UserNumber}">
+                  {block:Label}
+                    <span class="label">{Label}</span>
+                  {/block:Label}
+                  {Line}
+                </li>
+              {/block:Lines}
+            </ul>
+          </div>
+        {/block:Chat}
+        {block:Video}
+          <div class="post video">
+            {Video-500}
+            {block:Caption}
+              <div class="caption">{Caption}</div>
+            {/block:Caption}
+          </div>
+        {/block:Video}
+        {block:Audio}
+          <div class="post audio">
+            {AudioPlayerBlack}
+            {block:Caption}
+              <div class="caption">{Caption}</div>
+            {/block:Caption}
+          </div>
+        {/block:Audio}
+      {/block:Posts}
+    </div>
+    <p id="footer">
+      {block:PreviousPage}
+        <a href="{PreviousPage}">&#171; Previous</a>
+      {/block:PreviousPage}
+      {block:NextPage}
+        <a href="{NextPage}">Next &#187;</a>
+      {/block:NextPage}
+      <a href="/archive">Archive</a>
+    </p>
+  </body>
+</html>
