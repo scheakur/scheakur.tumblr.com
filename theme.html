@@ -61,6 +61,7 @@ body {
 .date {
   padding-right: 4px;
   text-align: right;
+  font-family: monospace;
 }
 pre {
   padding: 0.5em;
@@ -81,10 +82,10 @@ code {
       {block:Posts}
         <div class="post">
           {block:NewDayDate}
-            <div class="date">{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}</div>
+            <div class="date">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}</div>
           {/block:NewDayDate}
           {block:SameDayDate}
-            <div class="date">{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}</div>
+            <div class="date">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}</div>
           {/block:SameDayDate}
           {block:Text}
             <div class="text">
