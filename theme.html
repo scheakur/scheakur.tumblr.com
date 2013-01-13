@@ -23,21 +23,21 @@ body {
 #title {
   margin: 0.5em 0 0 0;
   font-size: 128px;
-  font-family: serif;
+  font-family: "Times New Roman", serif;
   font-weight: bold;
   text-align: center;
   line-height: 50%;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.11em;
 }
 #title a {
   display: block;
-  color: #252525;
+  color: #fafafa;
+  text-shadow: #535353 2px 2px 2px;
   text-decoration: none;
 }
-
 #description {
   text-align: right;
-  padding-right: 4px;
+  padding-right: 0.4em;
 }
 .post {
   margin-top: 128px;
@@ -48,29 +48,51 @@ body {
 }
 .title a {
   display: block;
-  padding: 0 4px;
-  color: #252525;
+  padding: 0 0.4em;
+  color: #647d11;
   text-decoration: none;
 }
 .title a:hover {
-  background-color: rgba(242, 215, 215, 0.44);
+  color: #90ad39;
 }
 .body {
-  padding: 0 4px;
+  padding: 0 0.4em;
   line-height: 140%;
 }
+.meta {
+  list-style-type: none;
+  font-size: small;
+  font-family: monospace;
+}
+.meta:after {
+  display: block;
+  clear: both;
+  height: 0px;
+  visibility: hidden;
+  content: ".";
+}
+.meta li {
+  float: right;
+  padding-right: 0.8em;
+}
+.tag a {
+  color: #647d11;
+}
+.tag a:hover {
+  color: #90ad39;
+}
 .date {
-  padding-right: 4px;
+  padding-right: 0.4em;
   text-align: right;
   font-family: monospace;
 }
 pre {
-  padding: 0.5em;
-  background-color: #eee;
+  padding: 0.4em;
+  background-color: rgba(241, 235, 241, 0.6);
 }
-code {
+p > code {
   padding: 3px;
-  background-color: #eee;
+  background-color: rgba(241, 235, 241, 0.6);
 }
     </style>
   </head>
@@ -82,12 +104,19 @@ code {
     <div class="posts">
       {block:Posts}
         <div class="post">
-          {block:NewDayDate}
-            <div class="date">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}</div>
-          {/block:NewDayDate}
-          {block:SameDayDate}
-            <div class="date">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}</div>
-          {/block:SameDayDate}
+          <ul class="meta">
+            {block:NewDayDate}
+              <li class="date">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}</li>
+            {/block:NewDayDate}
+            {block:SameDayDate}
+              <li class="date">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}</li>
+            {/block:SameDayDate}
+            {block:HasTags}
+              {block:Tags}
+                <li class="tag"><a href="{TagURL}">#{Tag}</a></li>
+              {/block:Tags}
+            {/block:HasTags}
+          </ul>
           {block:Text}
             <div class="text">
               {block:Title}
