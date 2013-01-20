@@ -82,9 +82,15 @@ body {
   color: #90ad39;
 }
 .date {
-  padding-right: 0.4em;
   text-align: right;
   font-family: monospace;
+}
+.date a {
+  color: #252525;
+  text-decoration: none;
+}
+.date a:hover {
+  text-decoration: underline;
 }
 pre {
   padding: 0.4em;
@@ -106,10 +112,10 @@ p > code {
         <div class="post">
           <ul class="meta">
             {block:NewDayDate}
-              <li class="date">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}</li>
+              <li class="date"><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}</a></li>
             {/block:NewDayDate}
             {block:SameDayDate}
-              <li class="date">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}</li>
+              <li class="date"><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds}</a></li>
             {/block:SameDayDate}
             {block:HasTags}
               {block:Tags}
