@@ -12,6 +12,12 @@
     <script src="http://static.tumblr.com/fpifyru/VCxlv9xwi/writecapture.js"></script>
     <script src="http://static.tumblr.com/fpifyru/AKFlv9zdu/embedgist.js"></script>
     <style>
+* {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+}
 body {
   margin: 0 auto;
   padding: 1em;
@@ -19,6 +25,9 @@ body {
   color: #252525;
   font-family: serif;
   background: #fafafa url('{image:Background}');
+}
+a {
+  color: #647d11;
 }
 ::selection {
     background-color: #ddf0dd;
@@ -41,12 +50,13 @@ body {
 #description {
   text-align: right;
   padding-right: 0.4em;
+  margin: 1em 0;
 }
 .post {
   margin-top: 128px;
 }
 .title {
-  margin: 0;
+  margin: 0 0 0.83em 0;
   border-bottom: 1px dashed #898989;
 }
 .title a {
@@ -61,6 +71,15 @@ body {
 .body {
   padding: 0 0.4em;
   line-height: 140%;
+}
+.body h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 2em 0 0.83em 0;
+  color: #755742;
+}
+.body p {
+  margin: 1em 0;
 }
 .meta {
   list-style-type: none;
