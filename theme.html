@@ -14,21 +14,19 @@
     <script src="http://static.tumblr.com/fpifyru/VCxlv9xwi/writecapture.js"></script>
     <script src="http://static.tumblr.com/fpifyru/AKFlv9zdu/embedgist.js"></script>
     {block:IfHatenaStarToken}
-    <script src="http://s.hatena.com/js/HatenaStar.js"></script>
-    <script>
-    Hatena.Star.Token = '{text:Hatena Star Token}';
-    </script>
-    <script>
-    Hatena.Star.SiteConfig = {
-      entryNodes: {
-        'div.post': {
-          uri: '.title a',
-          title: '.title',
-          container: '.title'
-        }
-      }
-    };
-    </script>
+      <script src="http://s.hatena.com/js/HatenaStar.js"></script>
+      <script>
+        Hatena.Star.Token = '{text:Hatena Star Token}';
+        Hatena.Star.SiteConfig = {
+          entryNodes: {
+            'div.post': {
+              uri: '.title a',
+              title: '.title',
+              container: '.title'
+            }
+          }
+        };
+      </script>
     {/block:IfHatenaStarToken}
     <style>
 * {
