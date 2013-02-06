@@ -134,19 +134,29 @@ a {
   display: block;
   margin: 0 auto;
 }
-pre {
+pre, ins > pre, del > pre {
   padding: 0.4em;
   font-size: small;
   background-color: #e7e7e7;
   /*background-color: rgba(241, 235, 241, 0.6);*/
   font-family: 'monaco' 'osaka' monospace;
 }
-p > code {
+p > code, p > ins > code, p > del > code {
   padding: 3px;
   font-size: small;
   background-color: #e7e7e7;
   /*background-color: rgba(241, 235, 241, 0.6);*/
   font-family: 'monaco' 'osaka' monospace;
+}
+.body ins {
+  padding: 3px;
+  background-color: #f0f0bb;
+  text-decoration: underline;
+}
+.body del {
+  padding: 3px;
+  background-color: #f0dddd;
+  text-decoration: line-through;
 }
 .gist {
   line-height: 120%;
