@@ -263,13 +263,13 @@ p > code, p > ins > code, p > del > code {
           {/block:Audio}
           {block:IndexPage}
             {block:IfDisqusShortname}
-              <p class="disqus-count"><a href="{Permalink}#disqus_thread" class="view-comments dsq-comment-count">Comments</a>
+              <p class="disqus-count"><a href="{Permalink}#disqus_thread">Comments</a>
             {/block:IfDisqusShortname}
           {block:IndexPage}
           {block:PermalinkPage}
             {block:IfDisqusShortname}
               <div id="disqus_thread"></div>
-              <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+              <script src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
               <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
             {/block:IfDisqusShortname}
           {/block:PermalinkPage}
