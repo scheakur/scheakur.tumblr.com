@@ -140,6 +140,7 @@ pre, ins > pre, del > pre {
   background-color: #e7e7e7;
   /*background-color: rgba(241, 235, 241, 0.6);*/
   font-family: 'monaco' 'osaka' monospace;
+  overflow: auto;
 }
 p > code, p > ins > code, p > del > code {
   padding: 3px;
@@ -152,6 +153,11 @@ p > code, p > ins > code, p > del > code {
   padding: 3px;
   background-color: #f0f0bb;
   text-decoration: underline;
+}
+.body ins:before {
+  content: '追記 ('attr(datetime) ')\d\a';
+  white-space: pre;
+  font-size: small;
 }
 .body del {
   padding: 3px;
