@@ -8,7 +8,7 @@
     {/block:Description}
     <meta name="text:Disqus Shortname" content="" />
     <meta name="text:Hatena Star Token" content="" />
-    <meta name="image:Background" content=""/>
+    <meta name="image:Logo" content=""/>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://static.tumblr.com/fpifyru/VCxlv9xwi/writecapture.js"></script>
     <script src="http://static.tumblr.com/fpifyru/AKFlv9zdu/embedgist.js"></script>
@@ -29,18 +29,27 @@
     {/block:IfHatenaStarToken}
     <style>
 * {
-  -webkit-margin-before: 0;
-  -webkit-margin-after: 0;
-  -webkit-margin-start: 0;
-  -webkit-margin-end: 0;
+  margin: 0;
+  padding: 0;
 }
 body {
-  margin: 0 auto;
-  padding: 1em;
-  max-width: 960px;
-  color: #252525;
+  color: #323232;
+  background-color: #fcfcfc;
   font-family: serif;
-  background: #fafafa url('{image:Background}');
+}
+#meta {
+  position: fixed;
+  width: 26%;
+  line-height: 200%;
+}
+#logo {
+  width: 140px;
+}
+#content {
+  margin-left: 26%;
+  border-left: 1px solid #d1d1d1;
+  line-height: 1.4em;
+  position: relative;
 }
 a {
   color: #647d11;
@@ -49,31 +58,43 @@ a {
     background-color: #ddf0dd;
 }
 #title {
-  margin: 0.5em 0 0 0;
-  font-size: 128px;
-  font-family: "Times New Roman", serif;
-  font-weight: bold;
+  margin: 20px 0 0 0;
   text-align: center;
   line-height: 50%;
   letter-spacing: -0.11em;
 }
 #title a {
   display: block;
-  color: #fafafa;
-  text-shadow: #535353 2px 2px 2px;
   text-decoration: none;
+}
+#blogname {
+  padding-top: 12px;
+  font-size: 32px;
+  font-family: "Times New Roman", serif;
+  font-weight: bold;
+  color: #323232;
 }
 #description {
   text-align: right;
   padding-right: 0.4em;
   margin: 1em 0;
 }
+.posts {
+  min-height: 900px;
+}
 .post {
-  margin-top: 128px;
+  margin-bottom: 128px;
+  border-bottom: 1px solid #d1d1d1;
+}
+.content {
+  max-width: 800px;
+  padding: 10px;
+}
+.content ul, .content ol {
+  margin-left: 20px;
 }
 .title {
   margin: 0 0 0.83em 0;
-  border-bottom: 1px dashed #898989;
 }
 .title a {
   color: #647d11;
@@ -98,6 +119,8 @@ a {
   list-style-type: none;
   font-size: small;
   font-family: 'monaco' 'osaka' monospace;
+  border-bottom: 1px dashed #d1d1d1;
+  padding: 10px;
 }
 .meta:after {
   display: block;
@@ -107,11 +130,11 @@ a {
   content: ".";
 }
 .meta li {
-  float: right;
-  padding-right: 0.8em;
+  float: left;
+  padding-left: 0.8em;
 }
 .meta li.date {
-  padding-right: 0;
+  padding-left: 0;
 }
 .tag a {
   color: #647d11;
@@ -120,7 +143,6 @@ a {
   color: #90ad39;
 }
 .date {
-  text-align: right;
   font-family: 'monaco' 'osaka' monospace;
 }
 .date a {
@@ -138,7 +160,6 @@ pre, ins > pre, del > pre {
   padding: 0.4em;
   font-size: small;
   background-color: #e7e7e7;
-  /*background-color: rgba(241, 235, 241, 0.6);*/
   font-family: 'monaco' 'osaka' monospace;
   overflow: auto;
 }
@@ -146,7 +167,6 @@ p > code, p > ins > code, p > del > code {
   padding: 3px;
   font-size: small;
   background-color: #e7e7e7;
-  /*background-color: rgba(241, 235, 241, 0.6);*/
   font-family: 'monaco' 'osaka' monospace;
 }
 .body ins {
@@ -168,137 +188,160 @@ p > code, p > ins > code, p > del > code {
   line-height: 120%;
   font-size: small;
 }
-#disqus_thread {
-  margin-top: 4em;
+.footer {
+  padding: 10px;
+  border-top: 1px dashed #d1d1d1;
 }
-.disqus-count {
-  margin-top: 0.4em;
+.permalink {
+  padding: 5px 0;
+}
+#disqus_thread {
+  max-width: 800px;
 }
 #footer {
   margin-top: 1.2em;
+  padding: 10px;
 }
 #footer a {
-  padding-right: 0.5em;
+  padding-right: 0.8em;
 }
     </style>
   </head>
   <body>
-    <h1 id="title"><a href="/">{Title}</a></h1>
-    {block:Description}
-      <p id="description">{Description}</p>
-    {/block:Description}
-    <div class="posts">
-      {block:Posts}
-        <div class="post">
-          <ul class="meta">
-            {block:NewDayDate}
-              <li class="date"><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}</a></li>
-            {/block:NewDayDate}
-            {block:SameDayDate}
-              <li class="date"><a href="{Permalink}">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}</a></li>
-            {/block:SameDayDate}
-            {block:HasTags}
-              {block:Tags}
-                <li class="tag"><a href="{TagURL}">#{Tag}</a></li>
-              {/block:Tags}
-            {/block:HasTags}
-          </ul>
-          {block:Text}
-            <div class="text">
-              {block:Title}
-                <h2 class="title"><a href="{Permalink}">{Title}</a></h2>
-              {/block:Title}
-              <div class="body">{Body}</div>
-            </div>
-          {/block:Text}
-          {block:Photo}
-            <div class="photo">
-              <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
-              {block:Caption}
-                <div class="caption">{Caption}</div>
-              {/block:Caption}
-            </div>
-          {/block:Photo}
-          {block:Photoset}
-            <div class="photoset">
-              {Photoset-500}
-              {block:Caption}
-                <div class="caption">{Caption}</div>
-              {/block:Caption}
-            </div>
-          {/block:Photoset}
-          {block:Quote}
-            <div class="quote">
-              "{Quote}"
-              {block:Source}
-                <div class="source">{Source}</div>
-              {/block:Source}
-            </div>
-          {/block:Quote}
-          {block:Link}
-            <div class="link">
-              <a href="{URL}" class="link" {Target}>{Name}</a>
-              {block:Description}
-                <div class="description">{Description}</div>
-              {/block:Description}
-            </div>
-          {/block:Link}
-          {block:Chat}
-            <div class="chat">
-              {block:Title}
-                <h2 clss="title"><a href="{Permalink}">{Title}</a></h2>
-              {/block:Title}
-              <ul class="chat">
-                {block:Lines}
-                  <li class="{Alt} user_{UserNumber}">
-                    {block:Label}
-                      <span class="label">{Label}</span>
-                    {/block:Label}
-                    {Line}
-                  </li>
-                {/block:Lines}
-              </ul>
-            </div>
-          {/block:Chat}
-          {block:Video}
-            <div class="video">
-              {Video-500}
-              {block:Caption}
-                <div class="caption">{Caption}</div>
-              {/block:Caption}
-            </div>
-          {/block:Video}
-          {block:Audio}
-            <div class="audio">
-              {AudioPlayerBlack}
-              {block:Caption}
-                <div class="caption">{Caption}</div>
-              {/block:Caption}
-            </div>
-          {/block:Audio}
-          {block:IndexPage}
-            {block:IfDisqusShortname}
-              <p class="disqus-count"><a href="{Permalink}#disqus_thread">Comments</a>
-            {/block:IfDisqusShortname}
-          {block:IndexPage}
-          {block:PermalinkPage}
-            {block:IfDisqusShortname}
-              <div id="disqus_thread"></div>
-              <script src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
-              <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
-            {/block:IfDisqusShortname}
-          {/block:PermalinkPage}
-        </div>
-      {/block:Posts}
+    <div id="meta">
+      <h1 id="title">
+        <a href="/">
+          <img id="logo" src="{image:Logo}"></img>
+          <div id="blogname">{Title}</div>
+        </a>
+      </h1>
+      {block:Description}
+        <p id="description">{Description}</p>
+      {/block:Description}
     </div>
-    <div id="footer">
-      {block:PreviousPage}
-        <a href="{PreviousPage}">&#171; Previous</a>
-      {/block:PreviousPage}
-      {block:NextPage}
-        <a href="{NextPage}">Next &#187;</a>
-      {/block:NextPage}
-      <a href="/archive">Archive</a>
+    <div id="content">
+      <div class="posts">
+        {block:Posts}
+          <div class="post">
+            <ul class="meta">
+              {block:NewDayDate}
+                <li class="date">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}</li>
+              {/block:NewDayDate}
+              {block:SameDayDate}
+                <li class="date">{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}</li>
+              {/block:SameDayDate}
+              {block:HasTags}
+                {block:Tags}
+                  <li class="tag"><a href="{TagURL}">#{Tag}</a></li>
+                {/block:Tags}
+              {/block:HasTags}
+            </ul>
+            {block:Text}
+              <div class="content text">
+                {block:Title}
+                  <h2 class="title"><a href="{Permalink}">{Title}</a></h2>
+                {/block:Title}
+                <div class="body">{Body}</div>
+              </div>
+            {/block:Text}
+            {block:Photo}
+              <div class="content photo">
+                <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+                {block:Caption}
+                  <div class="caption">{Caption}</div>
+                {/block:Caption}
+              </div>
+            {/block:Photo}
+            {block:Photoset}
+              <div class="content photoset">
+                {Photoset-500}
+                {block:Caption}
+                  <div class="caption">{Caption}</div>
+                {/block:Caption}
+              </div>
+            {/block:Photoset}
+            {block:Quote}
+              <div class="content quote">
+                "{Quote}"
+                {block:Source}
+                  <div class="source">{Source}</div>
+                {/block:Source}
+              </div>
+            {/block:Quote}
+            {block:Link}
+              <div class="content link">
+                <a href="{URL}" class="link" {Target}>{Name}</a>
+                {block:Description}
+                  <div class="description">{Description}</div>
+                {/block:Description}
+              </div>
+            {/block:Link}
+            {block:Chat}
+              <div class="content chat">
+                {block:Title}
+                  <h2 clss="title"><a href="{Permalink}">{Title}</a></h2>
+                {/block:Title}
+                <ul class="chat">
+                  {block:Lines}
+                    <li class="{Alt} user_{UserNumber}">
+                      {block:Label}
+                        <span class="label">{Label}</span>
+                      {/block:Label}
+                      {Line}
+                    </li>
+                  {/block:Lines}
+                </ul>
+              </div>
+            {/block:Chat}
+            {block:Video}
+              <div class="content video">
+                {Video-500}
+                {block:Caption}
+                  <div class="caption">{Caption}</div>
+                {/block:Caption}
+              </div>
+            {/block:Video}
+            {block:Audio}
+              <div class="content audio">
+                {AudioPlayerBlack}
+                {block:Caption}
+                  <div class="caption">{Caption}</div>
+                {/block:Caption}
+              </div>
+            {/block:Audio}
+            <div class="footer">
+              <div class="permalink">
+                URL: <a href="{Permalink}">{Permalink}</a>
+              </div>
+              {block:IndexPage}
+                {block:IfDisqusShortname}
+                  <div class="disqus">
+                    <p class="disqus-count"><a href="{Permalink}#disqus_thread">Comments</a></p>
+                  </div>
+                {/block:IfDisqusShortname}
+              {block:IndexPage}
+              {block:PermalinkPage}
+                {block:IfDisqusShortname}
+                  <div class="disqus">
+                    <div id="disqus_thread"></div>
+                    <script src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+                    <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
+                  </div>
+                {/block:IfDisqusShortname}
+              {/block:PermalinkPage}
+            </div>
+          </div>
+        {/block:Posts}
+      </div>
+      <div id="footer">
+        {block:NextPage}
+          <a href="{NextPage}">&#171; Older</a>
+        {/block:NextPage}
+        <a href="/archive">Archive</a>
+        {block:PreviousPage}
+          <a href="{PreviousPage}">Newer &#187;</a>
+        {/block:PreviousPage}
+      </div>
     </div>
   </body>
 </html>
